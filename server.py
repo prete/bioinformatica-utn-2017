@@ -58,10 +58,10 @@ class RequestHandler(BaseHTTPRequestHandler):
 
     #obtener los parametros del request
     def get_PARAMS(self):
-    try:
-        form_fields = cgi.FieldStorage(fp=self.rfile,\
-                                    headers=self.headers, \
-                                    environ={'REQUEST_METHOD':'POST', 'CONTENT_TYPE':self.headers['Content-Type'], })
+        try:
+            form_fields = cgi.FieldStorage(fp=self.rfile,\
+                                        headers=self.headers, \
+                                        environ={'REQUEST_METHOD':'POST', 'CONTENT_TYPE':self.headers['Content-Type'], })
             return form_fields
         except:
             return {}
