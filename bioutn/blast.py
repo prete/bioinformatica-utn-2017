@@ -18,7 +18,7 @@ def bastp_online(file_content):
 
 def parse_blast(file_content):
     try:
-        table_html = "<tbody>"  
+        table_html = "<tbody>"
         row_template = "<tr> \
                             <td>{0}</td> \
                             <td><button type=\"button\" class=\"btn btn-xs btn-primary\" \
@@ -33,5 +33,5 @@ def parse_blast(file_content):
         table_html+= "</tbody>"
         return (table_html, len(blast_record.hits), blast_record.description, blast_record.version, blast_record.target, blast_record.program)
     except:
-        print "Unexpected error:", sys.exc_info()[0]
+        print("Unexpected error:", sys.exc_info()[0])
         raise
