@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Bioinformática</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="../assets/css/bio.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Bioinformática</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a href="/">Inicio</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Conversor <b class="caret"></b></a>
+		        <ul class="dropdown-menu">
+                    <li><a href="/gb2fasta.html">GenBank -> FASTA</a></li>
+                </ul>
+            </li>           
+	        <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">BLAST <b class="caret"></b></a>
+		        <ul class="dropdown-menu">
+		            <li><a href="/view_blast.html">Analizar BLAST OUTPUT</a></li>
+		            <li></li>
+		            <li><a href="/blast_online.html">Realizar BLASTP (online)</a></li>
+		            <li><a href="#">Realizar BLASTP (local)</a></li>
+		        </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1 main">
+          <h1 class="page-header">Grupo MONSANTO</h1>
+
+          <h2 class="sub-header">Elección del genoma <strong>UGT1A1</strong></h2>   
+	  <p>Se eligió el gen UGT1A1 [homo sapiens] <a href="http://www.ncbi.nlm.nih.gov/gene/54658" target="_blank" class="label label-xs label-primary">NCBI</a>, que codifica la enzima Glucuroniltransferasa que en una enzima hepática que pertenece
+	  al grupo de las glicosiltransferasas y cataliza la transformación debilirrubina no conjugada o indirecta en bilirrubina conjugada
+	  o directa, mediante la adición de ácido glucurónico. Se encuentra en el cromosoma 2, tiene 5 exones. Mutaciones en este gen
+	  resultan en el síndrome de Crigler-Najjar tipo I y II y en el <b>Síndrome de Gilbert</b> <a href="http://es.wikipedia.org/wiki/S%C3%ADndrome_de_Gilbert" target="_blank" class="label label-xs label-primary">Wiki</a>&nbsp;<a href="http://omim.org/entry/143500" target="_blank" class="label label-xs label-primary">OMIM</a>.</p>
+	  <p>El gen fue elegido porque uno de los integrantes del equipo padece del <b>Síndrome de Gilbert</b>, del que existe evidencia para decir que es una consecuencia de una mutación en este gen.</p>
+
+          <h2 class="sub-header">Genes/proteínas homólogas</h2>   
+<p>Según NCBI este gen está presente en 117 animales, principalmente mamíferos (106), aves (4), peces óseos (2), tortugas (2), peces cartilaginosos (1), un tipo de lagarto y un tipo de erizo de mar.</p>
+
+          <h2 class="sub-header">Transcriptos y splicing</h2>   
+	<p> <b>Este gen tiene sólo un transcripto.</b> Tiene 13 primeros exones únicos, seguidos por 4 exones comunes. Cuatro de los primeros extones alternativos son considerados pseudogenes. Cada uno de los restantes nueve 5’ exones pueden hacer splicing con los 4 exones comunes, resultando en nueve protenias con diferentes N-termini e C-termine idénticos.</p>
+	<p>De las 27 posibles isoformas mRNA, 9 producen polipéptidos funcionalmente activos (UGT1A1, 1A3, 1A4, 1A5, 1A6, 1A7, 1A8, 1A9 and 1A10) llamados isoformas 1 (i1). El uso de un exon 5 alternativo (5b) como exon terminal lleva a 9 splices alternativos adicionales llamados isoformas i2 pero carecen de actividad de transferencia.</p>
+	<p>NCBI tiene 6 diferentes secuencias genómicas, mientras que en Ensemble sólo se muestra una, la diferencia sobre qué base de datos utilizar debe ser determinada por qué características queremos analizar del gen, dado que podemos necesitar un transcripto que sólo está en una o analizar anotaciones que solo están en una de las bases. Ensemble posee más información sobre secuencias genómicas humanas, así que si queremos investigar un gen humano, es posible que sea preferible usar esta base de datos.
+	</p>
+
+          <h2 class="sub-header">Pathways</h2>   
+	<p>El gen tiene 7 pathways:
+		<ul>
+		<li><b>Traducción:</b> La síntesis de una proteína es logrado a través del proceso de traducción de la secuencia mRNA en una cadena de péptidos.</li>
+		<li><b>Plegado de proteina:</b> Debido al ambiente tan populado dentro de la célula, muchas proteínas deben interactuar con parejas moleculares para lograr el anclamiento de su conformación nativa.</li>
+		<li><b>Modificación post-traducción de la proteína:</b> Después de la traducción, muchas proteínas recientemente formadas sufren modificaciones covalentes que alteran sus propiedades funcionales y que son esencialmente irreversibles bajo circunstancias fisiológicas en el cuerpo.</li>
+		<li><b>Importación mitocondrial de la proteína:</b> La mitocondria humana tiene alrededor de 1500 proteinas, y más del 99% son codificadas en el núcleo, sintetizadas en el citosol e importadas en las mitocondrias.</li>
+		<li><b>Metabolismo de hormonas péptidas</b></li>
+		<li><b>Regulación del Factor de Crecimiento de la familia de la insulina (IGF), transporte y consumo</b></li>
+		<li><b>Respuesta de proteínas desplegadas</b></li>
+		</ul>
+	</p>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <script src="../assets/jquery/jquery.min.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+  </body>
+</html>
+
