@@ -12,7 +12,7 @@ from Bio.Blast.Applications import NcbiblastpCommandline
 def bastp_online(file_content):
     try:
         print("Consultando NCBI...")
-        result_handle = NCBIWWW.qblast("blastp", "swissprot", file_content.getvalue())
+        result_handle = NCBIWWW.qblast("blastp", "swissprot", file_content.read())
         print("Respuesta a BLAST obtenida!")
         out_handle = result_handle.read()
         result_handle.close()
@@ -24,7 +24,7 @@ def bastp_online(file_content):
 def bastp_local(file_content):
     try:
         f = open("local_blast_input.fasta","w")
-        f.write(file_content.getvalue())
+        f.write(file_content.read())
         f.close()
         cmd = NcbiblastpCommandline(query="local_blast_input.fasta", \
                         db="swissprot", outfmt=5, out="local_blast_output.xml")

@@ -57,3 +57,7 @@ docs/_build/
 
 bioutn/prosite/prosite.dat
 bioutn/prosite/prosite.doc
+swissprot
+swissprot.phr
+swissprot.pin
+swissprot.psq

@@ -46,10 +46,21 @@ def parse_orf(file_content):
         table_html = "<tbody>"
         row_template = "<tr> \
                             <td>{0}</td> \
+                            <td>{1}</td> \
+                            <td>{2}</td> \
+                            <td>{3}</td> \
+                            <td>{4}</td> \
                         </tr>"
-        hits = re.findall("(\>.*)", file_content.read())
+        orf = file_content.read()
+        hits = re.findall("(\>.*)", orf)
         for hit in hits:
-            table_html += row_template.format( hit )
+            id_orf = re.search("\w+\.\d\_\d+", hit)
+            index = re.search("\[.*\]", hit)
+            desc = re.search(" (\w*( ))+\w+", hit)
+            family = re.search("\,.*\,", hit)
+            orf_type = re.search("\,( \w*)$", hit)
+             
+            table_html += row_template.format( id_orf.group(0), index.group(0), desc.group()[1:], family.group(0)[2:-1],  orf_type.group(0)[2:] )
         table_html+= "</tbody>"
         return (table_html, len(hits))
     except:
