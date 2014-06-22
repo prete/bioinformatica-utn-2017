@@ -34,6 +34,8 @@ class RequestHandler(BaseHTTPRequestHandler):
                 self.convertir_gb2fasta()
             elif self.path=="/blast/p/online":
                 self.blast_online()
+            elif self.path=="/blast/p/local":
+                self.blast_local()                
             elif self.path=="/blast/report":
                 self.blast_report()
             elif self.path=="/accession":
@@ -91,7 +93,19 @@ class RequestHandler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(output)
     ###########################################################################
-
+    
+    #BLASTP local
+    def blast_local(self):
+        params = self.get_PARAMS()
+        output = bioutn.bastp_local(params['input_file'].file)
+        file_name, file_extension = path.splitext(params['input_file'].filename)
+        self.send_response(200)
+        self.send_header('Content-type','application/xml')
+        self.send_header('Content-Disposition','attachment; filename=' + file_name + '_BLAST.xml')
+        self.end_headers()
+        self.wfile.write(output)
+    ###########################################################################
+    
     #parseo de archivo BLAST
     def blast_report(self):
         params = self.get_PARAMS()
@@ -124,10 +138,11 @@ class RequestHandler(BaseHTTPRequestHandler):
 
 # main
 try:
-    server = HTTPServer(('', 8080), RequestHandler)
+    port = 6666
+    server = HTTPServer(('', port), RequestHandler)
     print('=====================')
     print('Servidor inciado!')
-    print('Ingrese a http://localhost:8080 para acceder.')
+    print('Ingrese a http://localhost:%d para acceder.' % port)
     print('Presione <ctrl+C> una o dos veces para salir.')
     print('=====================')
     server.serve_forever()

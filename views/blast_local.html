@@ -10,9 +10,9 @@
     <title>Bioinformática</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="../assets/css/bio.css" rel="stylesheet">
+    <link href="../../assets/css/bio.css" rel="stylesheet">
   </head>
 
   <body>
@@ -30,7 +30,7 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li class="divider"><a href="/">Inicio</a></li>
+            <li><a href="/">Inicio</a></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Conversor <b class="caret"></b></a>
 		        <ul class="dropdown-menu">
@@ -40,10 +40,10 @@
 	        <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">BLAST <b class="caret"></b></a>
 		        <ul class="dropdown-menu">
-		            <li class="active"><a href="/view_blast.html">Analizar BLAST OUTPUT</a></li>
-		            <li></li>
+		            <li><a href="/view_blast.html">Analizar BLAST OUTPUT</a></li>
+		            <li class="divider"></li>
 		            <li><a href="/blast_online.html">Realizar BLASTP (online)</a></li>
-		            <li><a href="/blast_local.html">Realizar BLASTP (local)</a></li>
+		            <li class="active"><a href="/blast_local.html">Realizar BLASTP (local)</a></li>
 		        </ul>
             </li>
           </ul>
@@ -54,20 +54,40 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-8 col-md-offset-1 main">
-          <h1 class="page-header">Analisis de BLAST</h1>
+          <h1 class="page-header">BLAST local</h1>
 		<fieldset>
-			<form id="blast-form" role="form" action='/blast/report' method="POST" enctype=multipart/form-data>
+			<form id="blast-form" role="form" action='/blast/p/local' method="POST" enctype=multipart/form-data>
 			  <div class="form-group">
 			    <label for="input_file">Seleccione archivo</label>
 			    <input type="file" id="input_file" name="input_file"/>
-			    <p class="help-block small">Seleccione archivo para BLAST analizar el reporte.</p>
+			    <p class="help-block small">Seleccione archivo para realizar un BLAST.</p>
 			  </div>
-			  <button type="submit" id="submit-button" class="btn btn-primary">Ver reporte</button>
+			  <button type="submit" id="submit-button" class="btn btn-primary">Relizar BLAST</button>
 			</form>
 		</fieldset>
         </div>
       </div>
     </div>
+
+
+	<div class="modal fade bs-example-modal-sm" id="waiting-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+		<h4 class="modal-title" id="myModalLabel">Por favor espere</h4>
+	      </div>
+	      <div class="modal-body">
+		<h3>Consultando a NCBI</h3>
+		<div class="progress progress-striped active">
+		  <div class="progress-bar"  role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+		  </div>
+		</div>
+
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
