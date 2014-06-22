@@ -3,6 +3,10 @@ import cgi
 from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 from socket import gethostname
 import bioutn
+import sys
+import os
+import re
+from StringIO import StringIO
 
 class RequestHandler(BaseHTTPRequestHandler):
 
@@ -40,6 +44,12 @@ class RequestHandler(BaseHTTPRequestHandler):
                 self.blast_report()
             elif self.path=="/accession":
                 self.get_accession()
+            elif self.path=="/emboss/p/orf":
+                self.getorf()
+            elif self.path=="/emboss/p/motifs":
+                self.getmotifs()
+            elif self.path=="/emboss/p/orfreport":
+                self.orfreport()
             else:
                 self.send_error(404,'Error : %s' % self.path)
         except IOError:
@@ -134,6 +144,49 @@ class RequestHandler(BaseHTTPRequestHandler):
         self.send_header('Content-Disposition','attachment; filename=' + a + '.fasta')
         self.end_headers()
         self.wfile.write(output)
+    ###########################################################################
+
+    #EMBOSS getorf
+    def getorf(self):
+        params = self.get_PARAMS()
+        output = bioutn.getorf(params['input_file'].file)
+        print output
+        file_name, file_extension = path.splitext(params['input_file'].filename)
+        self.send_response(200)
+        self.send_header('Content-type','application/xml')
+        self.send_header('Content-Disposition','attachment; filename=' + file_name + '.orf')
+        self.end_headers()
+        self.wfile.write(output)
+    ###########################################################################
+
+    #EMBOSS getmotif
+    def getmotifs(self):
+        params = self.get_PARAMS()
+        output = bioutn.getmotifs(params['input_file'].file)
+        print output
+        file_name, file_extension = path.splitext(params['input_file'].filename)
+        self.send_response(200)
+        self.send_header('Content-type','application/xml')
+        self.send_header('Content-Disposition','attachment; filename=' + file_name + '.pathmatmotifs')
+        self.end_headers()
+        self.wfile.write(output)
+    ###########################################################################
+
+    ###########################################################################
+
+    #EMBOSS orfreport
+    def orfreport(self):
+        params = self.get_PARAMS()
+        table, hits = bioutn.parse_orf(params['input_file'].file)
+        f = open(curdir + sep + "views" + sep + "orf_result.html")
+        self.send_response(200)
+        self.send_header('Content-type','text/html')
+        self.end_headers()
+        template = f.read();
+        output = template.decode('utf-8') \
+                        .replace("<<BLAST-RESULT-TABLE>>",table) \
+                        .replace("<<ORF-HITS>>",str(hits)) 
+        self.wfile.write(output.encode('utf-8'))
     ###########################################################################
 
 # main

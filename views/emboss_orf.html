@@ -42,7 +42,7 @@
 		        <ul class="dropdown-menu">
 		            <li><a href="/view_blast.html">Analizar BLAST OUTPUT</a></li>
 		            <li class="divider"></li>
-		            <li class="active"><a href="/blast_online.html">Realizar BLASTP (online)</a></li>
+		            <li><a href="/blast_online.html">Realizar BLASTP (online)</a></li>
 		            <li><a href="/blast_local.html">Realizar BLASTP (local)</a></li>
 		        </ul>
             </li>
@@ -51,7 +51,7 @@
             <ul class="dropdown-menu">
                 <li><a href="/view_orf.html">Analizar ORF</a></li>
                 <li class="divider"></li>
-                <li><a href="/emboss_orf.html">Obtener ORF</a></li>
+                <li class="active"><a href="/emboss_orf.html">Obtener ORF</a></li>
                 <li><a href="/emboss_motifs.html">Obtener Dominios</a></li>
             </ul>
             </li>
@@ -63,15 +63,15 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-8 col-md-offset-1 main">
-          <h1 class="page-header">BLAST online con el NCBI</h1>
+          <h1 class="page-header">EMBOSS getorf</h1>
 		<fieldset>
-			<form id="blast-form" role="form" action='/blast/p/online' method="POST" enctype=multipart/form-data>
+			<form id="blast-form" role="form" action='/emboss/p/orf' method="POST" enctype=multipart/form-data>
 			  <div class="form-group">
 			    <label for="input_file">Seleccione archivo</label>
 			    <input type="file" id="input_file" name="input_file"/>
-			    <p class="help-block small">Seleccione archivo para realizar un BLAST.</p>
+			    <p class="help-block small">Seleccione archivo para realizar el analisis de los Open Reading Frames.</p>
 			  </div>
-			  <button type="submit" id="submit-button" class="btn btn-primary">Relizar BLAST</button>
+			  <button type="submit" id="submit-button" class="btn btn-primary">Analizar ORF</button>
 			</form>
 		</fieldset>
         </div>
@@ -86,7 +86,7 @@
 		<h4 class="modal-title" id="myModalLabel">Por favor espere</h4>
 	      </div>
 	      <div class="modal-body">
-		<h3>Consultando a NCBI</h3>
+		<h3>Analizando ORF</h3>
 		<div class="progress progress-striped active">
 		  <div class="progress-bar"  role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
 		  </div>
