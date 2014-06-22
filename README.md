@@ -21,3 +21,4 @@ Permite convertir entre diferentes formatos:
 Permite realizar y analizar BLAST:
 * Reporte de un BALST
 * Realizar un BLAST online en el NCBI
+* Realizar un BLAST local usando swissprot
