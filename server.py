@@ -187,7 +187,7 @@ class RequestHandler(BaseHTTPRequestHandler):
         file_name, file_extension = path.splitext(params['input_file'].filename)
         self.send_response(200)
         self.send_header('Content-type','application/xml')
-        self.send_header('Content-Disposition','attachment; filename=' + file_name + '.pathmatmotifs')
+        self.send_header('Content-Disposition','attachment; filename=' + file_name + '.patmatmotifs')
         self.end_headers()
         self.wfile.write(output)
     ###########################################################################
