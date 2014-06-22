@@ -54,4 +54,6 @@ body {
   display: inline-block;
   border-radius: 50%;
 }
-
+#domain_bubbles{
+  text-align: center;
+}

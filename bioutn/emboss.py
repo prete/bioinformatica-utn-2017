@@ -2,6 +2,7 @@ import sys
 import os
 from StringIO import StringIO
 import re
+import json
 
 def getorf(file_content):
     try:
@@ -63,6 +64,30 @@ def parse_orf(file_content):
             table_html += row_template.format( id_orf.group(0), index.group(0), desc.group()[1:], family.group(0)[2:-1],  orf_type.group(0)[2:] )
         table_html+= "</tbody>"
         return (table_html, len(hits))
+    except:
+        print("Unexpected error:", sys.exc_info()[0])
+        raise
+
+def parse_motifs(file_content):
+    try:
+        motifs_file = file_content.read()
+        motifs = re.findall("(Motif = ([\w\_])*)", motifs_file)
+        #arr = motifs
+
+        arr = {"name": "flare", "children":[]}
+
+        arr_motif = []
+        for motif in motifs:
+            arr_motif.append(motif[0][8:])
+
+        for k in list(set(arr_motif)):
+            arr["children"].append({"name": k, "size": arr_motif.count(k)*100});
+
+        f = open('bioutn/motifs.json','w')
+        f.write(json.dumps(arr))
+        f.close();
+
+        return (len(motifs))
     except:
         print("Unexpected error:", sys.exc_info()[0])
         raise

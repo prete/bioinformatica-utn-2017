@@ -20,11 +20,15 @@ class RequestHandler(BaseHTTPRequestHandler):
         try:
             if self.path == "/":
                 f = open(curdir + sep + "views" + sep +"index.html")
+                self.write_headers()
             elif self.path.endswith(".html"):
                 f = open(curdir + sep + "views" + sep + self.path)
+                self.write_headers()
+            elif self.path=="/emboss/p/motifs.json":
+                f = open(curdir + sep + "bioutn" + sep + "motifs.json")
             else:
                 f = open(curdir + sep + self.path)
-            self.write_headers()
+                self.write_headers()
             self.wfile.write(f.read())
             f.close()
         except IOError:
@@ -52,6 +56,8 @@ class RequestHandler(BaseHTTPRequestHandler):
                 self.getmotifs()
             elif self.path=="/emboss/p/orfreport":
                 self.orfreport()
+            elif self.path=="/emboss/p/motifsreport":
+                self.motifsreport()
             else:
                 self.send_error(404,'Error : %s' % self.path)
         except IOError:
@@ -202,6 +208,21 @@ class RequestHandler(BaseHTTPRequestHandler):
                         .replace("<<ORF-HITS>>",str(hits)) 
         self.wfile.write(output.encode('utf-8'))
     ###########################################################################
+
+    #EMBOSS orfreport
+    def motifsreport(self):
+        params = self.get_PARAMS()
+        hits = bioutn.parse_motifs(params['input_file'].file)
+        f = open(curdir + sep + "views" + sep + "motifs_result.html")
+        self.send_response(200)
+        self.send_header('Content-type','text/html')
+        self.end_headers()
+        template = f.read();
+        output = template.decode('utf-8') \
+                        .replace("<<MOTIFS-HITS>>",str(hits)) 
+        self.wfile.write(output.encode('utf-8'))
+    ###########################################################################
+
 
 # main
 try:
