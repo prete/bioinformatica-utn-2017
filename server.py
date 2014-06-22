@@ -36,8 +36,6 @@ class RequestHandler(BaseHTTPRequestHandler):
         try:
             if self.path=="/conversor/gb2fasta":
                 self.convertir_gb2fasta()
-            elif self.path=="/conversor/fasta2gb":
-                self.convertir_fasta2gb()
             elif self.path=="/conversor/nucgb2protfasta":
                 self.convertir_nucgb2protfasta()
             elif self.path=="/blast/p/online":
