@@ -14,8 +14,8 @@ Resumen del trabajo con bases de datos biológicas
 
 ##Menu Conversores
 Permite convertir entre diferentes formatos:
-* GenBank -> FASTA
-* FASTA -> GenBank
+* GenBank -> FASTA (traducido)
+* GenBank -> FASTA (sin traducir)
 
 ##Menu BLAST
 Permite realizar y analizar BLAST:

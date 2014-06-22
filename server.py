@@ -36,6 +36,10 @@ class RequestHandler(BaseHTTPRequestHandler):
         try:
             if self.path=="/conversor/gb2fasta":
                 self.convertir_gb2fasta()
+            elif self.path=="/conversor/fasta2gb":
+                self.convertir_fasta2gb()
+            elif self.path=="/conversor/nucgb2protfasta":
+                self.convertir_nucgb2protfasta()
             elif self.path=="/blast/p/online":
                 self.blast_online()
             elif self.path=="/blast/p/local":
@@ -79,7 +83,19 @@ class RequestHandler(BaseHTTPRequestHandler):
             return {}
     ###########################################################################
 
-    #Genbank a FASTA
+    #Genbank a FASTA (nuc a prot)
+    def convertir_nucgb2protfasta(self):
+        params = self.get_PARAMS()
+        output = bioutn.nucgb2protfasta(params['input_file'].file)
+        file_name, file_extension = path.splitext(params['input_file'].filename)
+        self.send_response(200)
+        self.send_header('Content-type','application/fasta')
+        self.send_header('Content-Disposition','attachment; filename=' + file_name + '.fasta')
+        self.end_headers()
+        self.wfile.write(output)
+    ###########################################################################
+    
+    #Genbank a FASTA (sin traduccion)
     def convertir_gb2fasta(self):
         params = self.get_PARAMS()
         output = bioutn.gb2fasta(params['input_file'].file)

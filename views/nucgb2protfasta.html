@@ -63,13 +63,13 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-10 col-md-offset-1 main">
-          <h1 class="page-header">Conversor de formato GenBank a FASTA sin traducción</h1>
+          <h1 class="page-header">Conversor de formato y traductor GenBank (nuc) a FASTA (prot)</h1>
 		<fieldset>
-			<form role="form" id="convert-form" action='/conversor/gb2fasta' method="POST" enctype=multipart/form-data>
+			<form role="form" id="convert-form" action='/conversor/nucgb2protfasta' method="POST" enctype=multipart/form-data>
 			  <div class="form-group">
 			    <label for="input_file">Seleccione archivo</label>
 			    <input type="file" id="input_file" name="input_file"/>
-			    <p class="help-block small">Seleccione archivo en formato GenBank.</p>
+			    <p class="help-block small">Seleccione archivo en formato GenBank (nuc).</p>
 			  </div>
 			  <button id="submit-button" type="submit" class="btn btn-primary">Convertir</button>
 			</form>
