@@ -81,7 +81,7 @@ def parse_motifs(file_content):
             arr_motif.append(motif[0][8:])
 
         for k in list(set(arr_motif)):
-            arr["children"].append({"name": k, "size": arr_motif.count(k)*100});
+            arr["children"].append({"name": k, "size": arr_motif.count(k)});
 
         f = open('bioutn/motifs.json','w')
         f.write(json.dumps(arr))
